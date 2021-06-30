@@ -6,14 +6,9 @@ pipeline {
   }
   agent any
   stages {
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/bharathalleni/emoji-search.git'
-      }
-    }
- 
     stage('Building image') {
       steps{
+        sh "printenv"
         sh "docker build -t riteshk03/emoji-search:$BUILD_ID ."
        // sh "docker run -dp 80:80 riteshk03/emoji-search:$BUILD_ID"
         sh "docker push riteshk03/emoji-search:$BUILD_ID"
