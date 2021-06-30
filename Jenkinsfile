@@ -18,10 +18,10 @@ pipeline {
     stage('Creating Deployment') {
       steps {
         sh  '''
-                if [ "$GIT_BRANCH" == "development" ]
+                if [[ "$GIT_BRANCH" == "development" ]]
                 then
                     kubectl set image deployment/jenkins-app nginx=riteshk03/emoji-search:$BUILD_ID-$BRANCH_NAME -n $BRANCH_NAME
-                elif [ "$GIT_BRANCH" == "production" ]
+                elif [[ "$GIT_BRANCH" == "production" ]]
                 then
                     kubectl set image deployment/jenkins-app nginx=riteshk03/emoji-search:$BUILD_ID-$BRANCH_NAME -n $BRANCH_NAME
                 fi
