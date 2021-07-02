@@ -29,6 +29,9 @@ pipeline {
                 elif [[ $GIT_BRANCH == "master" ]]
                 then
                     kubectl set image deployment/jenkins-app nginx=riteshk03/emoji-search:$BUILD_ID-$BRANCH_NAME -n production
+                    elif [[ $GIT_BRANCH == "hotfix"* ]]
+                then
+                    kubectl set image deployment/jenkins-app nginx=riteshk03/emoji-search:$BUILD_ID-$BRANCH_NAME -n production
                 fi         
             '''
       }
